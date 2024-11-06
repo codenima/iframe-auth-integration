@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Application A</title>
+</head>
+<body>
+    <h1>Application A</h1>
+
+    <!-- Iframe pour charger Application B -->
+    <iframe id="iframeB" name="iframeB" style="width:100%; height:400px;"></iframe>
+
+    <!-- Formulaire invisible qui envoie les données en POST -->
+    <form id="postForm" action="http://localhost:8080/postservlet/AppB" method="POST" target="iframeB" style="display: none;">
+        <input type="hidden" name="token" 
+        value="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c">
+    </form>
+
+    <script>
+        // Soumettre automatiquement le formulaire pour envoyer les données dans l'iframe
+        window.onload = function() {
+            document.getElementById('postForm').submit();
+        };
+    </script>
+</body>
+</html>
